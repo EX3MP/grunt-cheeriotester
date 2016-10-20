@@ -1,11 +1,11 @@
 {
   "name": "grunt-cheeriotester",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Small existence tester for html Elements.",
   "main": "Gruntfile.js",
   "repository": "https://github.com/EX3MP/grunt-cheeriotester",
   "scripts": {
-    "test": "npm install; grunt test;"
+    "test": "npm install; grunt success; grunt fail;"
   },
   "author": {
    "name": "Pascal Franzke",

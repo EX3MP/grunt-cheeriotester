@@ -13,13 +13,21 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     cheeriotester: {
-      files: [
-        'tests/index.html',
-        'tests/fail.html'
-      ]
+        success: {
+            files: [
+              'tests/success.html'
+            ]
+        },
+        fail: {
+            files: [
+              'tests/fail.html'
+            ]
+        }
+
     }
   });
   // Actually load this plugin's task(s).
   grunt.loadTasks('tasks');
-
+  grunt.registerTask('success', ['cheeriotester:success']);
+  grunt.registerTask('fail', ['cheeriotester:fail']);
 };

@@ -15,7 +15,6 @@ var toArray = function(value) {
 }
 
 module.exports = function(grunt) {
-
     var processFile = function(f, dest, options, $) {
         var errors = [];
         grunt.log.subhead('Processing ' + f.cyan);
@@ -27,16 +26,25 @@ module.exports = function(grunt) {
             var $select = $(opt.selector);
             if ($select.length <= 0) {
                 var msg = opt.selector + ' not found in ' + f;
-                errors.push(msg);
-                grunt.log.error(msg);
-                return false;
+                if(!opt.optional) {
+                    errors.push(msg);
+                    grunt.log.error(msg);
+                    return false;
+                }
+                grunt.log.writeln('Warning: '.yellow+msg.yellow);
+                return true;
+
             }
             $(opt.selector).map(function(i, elem) {
                 var msg = '';
                 if (opt.max && opt.max <= i) {
                     msg = opt.selector + (opt.attr ? ' with ' + opt.attr : '') + ' to many items in ' + f;
-                    errors.push(msg);
-                    grunt.log.error(msg);
+                    if (opt.optional) {
+                        grunt.log.writeln('Warning: '.yellow+msg.yellow);
+                    } else {
+                        errors.push(msg);
+                        grunt.log.error(msg);
+                    }
                     return false;
                 }
                 if (opt.attr == 'content') {
@@ -44,8 +52,12 @@ module.exports = function(grunt) {
                 }
                 if (!$(elem).attr(opt.attr)) {
                     msg = opt.selector + opt.attr + ' not found in ' + f;
-                    errors.push(msg);
-                    grunt.log.error(msg);
+                    if (opt.optional) {
+                        grunt.log.writeln('Warning: '.yellow+msg.yellow);
+                    } else {
+                        errors.push(msg);
+                        grunt.log.error(msg);
+                    }
                     return false;
                 }
                 return true;
@@ -98,80 +110,93 @@ module.exports = function(grunt) {
                 {
                     'selector': 'meta[name=image]',
                     'attr': 'content',
-                    'max': 1
+                    'max': 1,
+                    'optional': true
                 },
 
                 // <meta property="og:site_name" content="" />
                 {
                     'selector': 'meta[property="og:site_name"]',
                     'attr': 'content',
-                    'max': 1
+                    'max': 1,
+                    'optional': true
                 },
                 // <meta property="og:title" content="" />
                 {
                     'selector': 'meta[property="og:title"]',
                     'attr': 'content',
-                    'max': 1
+                    'max': 1,
+                    'optional': true
                 },
                 // <meta property="og:url" content="" />
                 {
                     'selector': 'meta[property="og:url"]',
                     'attr': 'content',
-                    'max': 1
+                    'max': 1,
+                    'optional': true
                 },
                 // <meta property="og:description" content="" />
                 {
                     'selector': 'meta[property="og:description"]',
                     'attr': 'content',
-                    'max': 1
+                    'max': 1,
+                    'optional': true
                 },
                 // <meta property="og:type" content="" />
                 {
                     'selector': 'meta[property="og:type"]',
                     'attr': 'content',
-                    'max': 1
+                    'max': 1,
+                    'optional': true
                 },
                 // <meta property="og:image" content="" />
                 {
                     'selector': 'meta[property="og:image"]',
                     'attr': 'content',
-                    'max': 1
+                    'max': 1,
+                    'optional': true
                 },
                 //  <meta name="twitter:card" content="" />
                 {
                     'selector': 'meta[name="twitter:card"]',
                     'attr': 'content',
-                    'max': 1
+                    'max': 1,
+                    'optional': true
                 },
                 //  <meta name="twitter:site" content="@" />
                 {
                     'selector': 'meta[name="twitter:site"]',
                     'attr': 'content',
-                    'max': 1
+                    'max': 1,
+                    'optional': true
                 },
                 //  <meta name="twitter:title" content="" />
                 {
                     'selector': 'meta[name="twitter:title"]',
                     'attr': 'content',
-                    'max': 1
+                    'max': 1,
+                    'optional': true
                 },
                 //  <meta name="twitter:url" content="" />
                 {
                     'selector': 'meta[name="twitter:url"]',
                     'attr': 'content',
-                    'max': 1
+                    'max': 1,
+                    'optional': true
                 },
                 //  <meta name="twitter:description" content="" />
                 {
                     'selector': 'meta[name="twitter:description"]',
                     'attr': 'content',
-                    'max': 1
+                    'max': 1,
+                    'optional': true
                 },
                 //  <meta name="twitter:image" content="" />
                 {
                     'selector': 'meta[name="twitter:image"]',
                     'attr': 'content',
-                    'max': 1
+                    'max': 1,
+                    'optional': true
                 },
                 //  <title></title>
                 {
@@ -193,7 +218,8 @@ module.exports = function(grunt) {
                 {
                     'selector': 'meta[name="theme-color"]',
                     'attr': 'content',
-                    'max': 1
+                    'max': 1,
+                    'optional': true
                 }
             ]
         });
