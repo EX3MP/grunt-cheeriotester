@@ -5,7 +5,7 @@
   "main": "Gruntfile.js",
   "repository": "https://github.com/EX3MP/grunt-cheeriotester",
   "scripts": {
-    "test": "npm install; grunt success; grunt fail;"
+    "test": "npm install; grunt test;"
   },
   "author": {
    "name": "Pascal Franzke",
