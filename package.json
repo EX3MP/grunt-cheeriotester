@@ -1,0 +1,21 @@
+{
+  "name": "grunt-cheeriotester",
+  "version": "0.0.1",
+  "description": "Small existence tester for html Elements.",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "npm install; grunt test;"
+  },
+  "author": {
+   "name": "Pascal Franzke",
+   "email": "pascal.franzke@googlemail.com",
+   "url": "https://github.com/EX3MP"
+ },
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^0.22.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1"
+  }
+}
