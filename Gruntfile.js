@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    htmltesti: {
+    cheeriotester: {
       files: [
         'tests/index.html',
         'tests/fail.html'

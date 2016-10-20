@@ -1,6 +1,6 @@
 {
   "name": "grunt-cheeriotester",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Small existence tester for html Elements.",
   "main": "Gruntfile.js",
   "repository": "https://github.com/EX3MP/grunt-cheeriotester",

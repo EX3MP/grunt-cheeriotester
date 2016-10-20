@@ -6,7 +6,7 @@ Small existence tester for html Elements.
 
 ```
 {
-  htmltesti: {
+  cheeriotester: {
     files: [
       'tests/index.html',
       'tests/fail.html'
