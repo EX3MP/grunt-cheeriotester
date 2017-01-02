@@ -37,7 +37,7 @@ module.exports = function(grunt) {
             }
             $(opt.selector).map(function(i, elem) {
                 var msg = '';
-                if (opt.max && opt.max <= i) {
+                if (opt.max && opt.max < i) {
                     msg = opt.selector + (opt.attr ? ' with ' + opt.attr : '') + ' to many items in ' + f;
                     if (opt.optional) {
                         grunt.log.writeln('Warning: '.yellow+msg.yellow);
